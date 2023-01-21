@@ -151,6 +151,7 @@
         <p class="success-message">${successMessage}</p>
     </c:if>
 
+<%--    logout--%>
     <form action="logout" method="post" class="logout-form">
         <button type="submit" class="logout-button">Logout</button>
     </form>
