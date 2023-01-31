@@ -51,7 +51,7 @@ public class SignUpServlet extends HttpServlet {
         String url = "jdbc:postgresql://localhost:5432/work";
         String usernameDb = "jodos";
         String passwordDb = "jodos2006";
-        String sql = "INSERT INTO users (username,email,password,age,bankType) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO users (username,email,password,age,bankType,amount) VALUES(?,?,?,?,?,?)";
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);

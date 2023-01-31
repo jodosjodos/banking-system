@@ -61,7 +61,7 @@
     <h1>Welcome to the Banking System</h1>
 
     <a href="login.jsp" class="button">Login</a>
-    <a href="registration.jsp" class="button">Register</a>
+    <a href="signUp.jsp" class="button">Register</a>
 
     <p>Already have an account? <a href="login.jsp">Login</a></p>
 
