@@ -154,7 +154,7 @@
     <form action="logout" method="post" class="logout-form">
         <button type="submit" class="logout-button">Logout</button>
     </form>
+    <p>done by @jodos</p>
 </div>
-<p>done by @jodos</p>
 </body>
 </html>
