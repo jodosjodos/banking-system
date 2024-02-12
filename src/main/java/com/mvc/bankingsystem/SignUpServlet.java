@@ -16,5 +16,9 @@ public class SignUpServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String bankType = req.getParameter("bankType");
+        System.out.println(usernmae);
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println(bankType);
     }
 }
