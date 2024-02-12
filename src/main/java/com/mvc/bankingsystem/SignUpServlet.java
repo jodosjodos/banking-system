@@ -18,8 +18,10 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String username = req.getParameter("username");
         String email = req.getParameter("email");
+
         String password = req.getParameter("password");
         int age = Integer.parseInt(req.getParameter("age"));
+        int amount = Integer.parseInt(req.getParameter("amount"));
 
         String bankType = req.getParameter("bankType");
         SignUpDao signUpDao = new SignUpDao();
@@ -29,7 +31,7 @@ public class SignUpServlet extends HttpServlet {
             dispatcher.forward(req, res);
 
         }
-        String resultSet = insertData(username, email, password, age, bankType);
+        String resultSet = insertData(username, email, password, age, bankType,amount);
 
         if (resultSet.equalsIgnoreCase("user have been created successfully")) {
             System.out.println(resultSet);
@@ -45,11 +47,11 @@ public class SignUpServlet extends HttpServlet {
 
     }
 
-    private String insertData(String username, String email, String password, int age, String bankType) {
+    private String insertData(String username, String email, String password, int age, String bankType, int amount) {
         String url = "jdbc:postgresql://localhost:5432/work";
         String usernameDb = "jodos";
         String passwordDb = "jodos2006";
-        String sql = "INSERT INTO users (username,email,password,age,bankType) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO users (username,email,password,age,bankType) VALUES(?,?,?,?,?,?)";
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
@@ -59,6 +61,7 @@ public class SignUpServlet extends HttpServlet {
             st.setString(3, password);
             st.setInt(4, age);
             st.setString(5, bankType);
+            st.setInt(6, amount);
             int res = st.executeUpdate();
             if (res == 1) {
                 return "user have been created successfully";

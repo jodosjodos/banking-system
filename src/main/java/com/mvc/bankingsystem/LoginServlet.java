@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.*;
@@ -22,11 +23,16 @@ public class LoginServlet extends HttpServlet {
                 // You can access the columns of the ResultSet here
                 String retrievedEmail = resultSet.getString("email");
                 String retrievedPassword = resultSet.getString("password");
+                int amount = resultSet.getInt("amount");
+                System.out.println(amount);
 
                 // Perform your desired logic here
                 if (email.equals(retrievedEmail) && password.equals(retrievedPassword)) {
                     // Successful login
-                    res.sendRedirect("home.jsp");
+                    HttpSession session = req.getSession();
+                    session.setAttribute("username", email);
+                    session.setAttribute("amount",amount);
+                    res.sendRedirect("banking.jsp");
                 } else {
                     // Invalid email or password
                     req.setAttribute("error", "Invalid email or password");
