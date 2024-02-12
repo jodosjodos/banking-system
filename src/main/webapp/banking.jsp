@@ -124,10 +124,12 @@
         <button type="submit">Deposit</button>
     </form>
 
+<%--    fail withdraw--%>
     <c:if test="${not empty depositError}">
         <p class="error-message">${depositError}</p>
     </c:if>
 
+<%--    success withdraw--%>
     <c:if test="${not empty successDeposit}">
         <p class="success-message">${successDeposit}</p>
     </c:if>
@@ -139,10 +141,12 @@
         <button type="submit" class="withdraw-button">Withdraw</button>
     </form>
 
+<%--    withdraw error --%>
     <c:if test="${not empty withdrawError}">
         <p class="error-message">${withdrawError}</p>
     </c:if>
 
+<%--    success withdraw--%>
     <c:if test="${not empty successMessage}">
         <p class="success-message">${successMessage}</p>
     </c:if>
