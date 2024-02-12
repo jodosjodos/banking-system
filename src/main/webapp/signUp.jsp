@@ -14,11 +14,13 @@
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
         }
+
         h1 {
             text-align: center;
             margin-top: 50px;
             color: #4CAF50;
         }
+
         form {
             max-width: 400px;
             margin: 0 auto;
@@ -30,7 +32,8 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="number"],
+        input[type="password"],select {
             display: block;
             width: 100%;
             padding: 10px;
@@ -67,8 +70,11 @@
 
     <input type="email" name="email" id="email" placeholder="Email"/>
     <input type="password" name="password" id="password" placeholder="Password"/>
-    <input type="text" name="bankType" id="bankType"
-           placeholder="Bank type can either be saving account or current account"/>
+    <input type="number" name="age" id="age" placeholder="age"/>
+    <select name="bankType" id="bankType">
+        <option value="saving account">current account</option>
+        <option value="saving account">saving account</option>
+    </select>
     <input type="submit" value="Sign Up">
     <p>Already have an account? <a href="login.jsp">Login</a></p>
 </form>

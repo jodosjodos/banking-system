@@ -19,6 +19,8 @@ public class SignUpServlet extends HttpServlet {
         String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        int age = Integer.parseInt(req.getParameter("age"));
+
         String bankType = req.getParameter("bankType");
         SignUpDao signUpDao = new SignUpDao();
         if (signUpDao.checkEmail(email)) {
@@ -27,7 +29,7 @@ public class SignUpServlet extends HttpServlet {
             dispatcher.forward(req, res);
 
         }
-        String resultSet = insertData(username, email, password, bankType);
+        String resultSet = insertData(username, email, password, age, bankType);
 
         if (resultSet.equalsIgnoreCase("user have been created successfully")) {
             System.out.println(resultSet);
@@ -43,11 +45,11 @@ public class SignUpServlet extends HttpServlet {
 
     }
 
-    private String insertData(String username, String email, String password, String bankType) {
+    private String insertData(String username, String email, String password, int age, String bankType) {
         String url = "jdbc:postgresql://localhost:5432/work";
         String usernameDb = "jodos";
         String passwordDb = "jodos2006";
-        String sql = "INSERT INTO users (username,email,password,bankType) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO users (username,email,password,age,bankType) VALUES(?,?,?,?,?)";
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, usernameDb, passwordDb);
@@ -55,7 +57,8 @@ public class SignUpServlet extends HttpServlet {
             st.setString(1, username);
             st.setString(2, email);
             st.setString(3, password);
-            st.setString(4, bankType);
+            st.setInt(4, age);
+            st.setString(5, bankType);
             int res = st.executeUpdate();
             if (res == 1) {
                 return "user have been created successfully";

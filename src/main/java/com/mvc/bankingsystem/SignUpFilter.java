@@ -14,6 +14,7 @@ public class SignUpFilter implements Filter {
         String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        int age =Integer.parseInt(req.getParameter("age"));
         String bankType = req.getParameter("bankType");
 
         if (username == null || username.trim().isEmpty()) {
@@ -35,6 +36,13 @@ public class SignUpFilter implements Filter {
         if (password == null || password.isEmpty()) {
             // Handle invalid password
             request.setAttribute("error", "Password is required");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
+        if (age < 18){
+            request.setAttribute("error", " age must be equal to 18 or greater ");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
             dispatcher.forward(request, response);
             return;

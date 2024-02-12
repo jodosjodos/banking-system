@@ -28,7 +28,7 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"], select {
             display: block;
             width: 100%;
             padding: 10px;
@@ -63,7 +63,10 @@
 <form action="login" method="post">
     <input type="email" name="email" id="email" placeholder="Email"/>
     <input type="password" name="password" id="password" placeholder="Password"/>
-    <input type="text" name="bankType" id="bankType" placeholder="Bank type can either be saving account or current account"/>
+    <select name="bankType" id="bankType">
+        <option value="saving account">current account</option>
+        <option value="saving account">saving account</option>
+    </select>
     <input type="submit" value="Login">
     <p>Don't have an account? <a href="signUp.jsp">Sign Up</a></p>
 </form>
