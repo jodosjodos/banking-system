@@ -46,7 +46,7 @@ public class SignUpServlet extends HttpServlet {
 
 
     }
-
+//insert data
     private String insertData(String username, String email, String password, int age, String bankType, int amount) {
         String url = "jdbc:postgresql://localhost:5432/work";
         String usernameDb = "jodos";
