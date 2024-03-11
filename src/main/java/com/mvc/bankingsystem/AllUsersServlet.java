@@ -16,13 +16,12 @@ public class AllUsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session =req.getSession();
         String email =(String) session.getAttribute("email");
-        if (email != "admin123@gmail.com"){
+        if (!email.equals("admin123@gmail.com")){
             req.setAttribute("error", " this page is accessed by only admin users");
             req.getRequestDispatcher("error.jsp").forward(req, res);
         }
 
         List<User> users = allUsers();
-        System.out.println(users);
         req.setAttribute("users", users);
         req.getRequestDispatcher("/usersList.jsp").forward(req, res);
     }
@@ -45,12 +44,7 @@ public class AllUsersServlet extends HttpServlet {
                 String bankType = resultSet.getString("banktype");
                 int age = resultSet.getInt("age");
                 double amount = resultSet.getDouble("amount");
-                System.out.println(username);
-                System.out.println(email);
-                System.out.println(password);
-                System.out.println(bankType);
-                System.out.println(age);
-                System.out.println(amount);
+
                 // Create User object with retrieved data
                 User user = new User(username, email, password, bankType, age, amount);
                 userList.add(user);

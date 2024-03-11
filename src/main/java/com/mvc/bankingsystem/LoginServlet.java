@@ -21,7 +21,6 @@ public class LoginServlet extends HttpServlet {
                 String retrievedEmail = resultSet.getString("email");
                 String retrievedPassword = resultSet.getString("password");
                 int amount = resultSet.getInt("amount");
-                System.out.println(amount);
 
                 // Perform your desired logic here
                 if (email.equals(retrievedEmail) && password.equals(retrievedPassword)) {
@@ -30,9 +29,12 @@ public class LoginServlet extends HttpServlet {
                     HttpSession session = req.getSession();
                     if (email.equals("admin123@gmail.com") ){
                         System.out.println(email);
+
                         session.setAttribute("email", email);
-                        res.sendRedirect("/users");
+                        res.sendRedirect("/banking-system/users");
                     } else {
+                        System.out.println("bank");
+
                         session.setAttribute("username", email);
                         session.setAttribute("amount", amount);
                         res.sendRedirect("banking.jsp");
