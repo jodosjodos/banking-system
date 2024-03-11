@@ -110,6 +110,20 @@
     </style>
 </head>
 <body>
+<%
+String username = (String) session.getAttribute("username");
+    if (username == null || username.isEmpty()) {
+        // User is not logged in, display a message and provide a link for login
+%>
+<div class="container">
+    <h1>Welcome to Your Banking Account</h1>
+    <p>You haven't logged in yet. Please <a href="login.jsp">log in</a> to access your account.</p>
+    <p>done by @jodos</p>
+</div>
+<%
+} else {
+        %>
+
 <div class="container">
     <h1>Welcome <%=session.getAttribute("username") %> to Your Banking Account</h1>
 
@@ -159,3 +173,4 @@
 </div>
 </body>
 </html>
+<%}%>
