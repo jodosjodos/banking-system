@@ -2,10 +2,7 @@ package com.mvc.bankingsystem;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -29,11 +26,20 @@ public class LoginServlet extends HttpServlet {
                 // Perform your desired logic here
                 if (email.equals(retrievedEmail) && password.equals(retrievedPassword)) {
                     // Successful login
+
                     HttpSession session = req.getSession();
-                    session.setAttribute("username", email);
-                    session.setAttribute("amount",amount);
-                    res.sendRedirect("banking.jsp");
-                } else {
+                    if (email.equals("admin123@gmail.com") ){
+                        System.out.println(email);
+                        session.setAttribute("email", email);
+                        res.sendRedirect("/users");
+                    } else {
+                        session.setAttribute("username", email);
+                        session.setAttribute("amount", amount);
+                        res.sendRedirect("banking.jsp");
+                    }
+
+
+                } else {// Cookie expires in 1 day (in seconds)
                     // Invalid email or password
                     req.setAttribute("error", "Invalid email or password");
                     req.getRequestDispatcher("error.jsp").forward(req, res);

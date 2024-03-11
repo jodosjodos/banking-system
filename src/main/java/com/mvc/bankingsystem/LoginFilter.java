@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebFilter("/login")
 public class LoginFilter implements Filter {
@@ -15,10 +17,21 @@ public class LoginFilter implements Filter {
         String password = req.getParameter("password");
         String bankType = req.getParameter("bankType");
 
-
         if (email == null || email.trim().isEmpty()) {
             // Handle invalid email
             request.setAttribute("error", "Email is required");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
+        // Validate email format using regex
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern emailPattern = Pattern.compile(emailRegex);
+        Matcher emailMatcher = emailPattern.matcher(email);
+        if (!emailMatcher.matches()) {
+            // Handle invalid email format
+            request.setAttribute("error", "Invalid email format");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
             dispatcher.forward(request, response);
             return;
@@ -52,6 +65,4 @@ public class LoginFilter implements Filter {
         // If all parameters are valid, continue with the filter chain
         chain.doFilter(request, response);
     }
-
-
 }

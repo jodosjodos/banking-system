@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>sign-up</title>
+    <title>KCB Bank - Sign Up</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
         h1 {
             text-align: center;
             margin-top: 50px;
-            color: #4CAF50;
+            color: #007f3f;
         }
 
         form {
@@ -33,7 +33,8 @@
         input[type="text"],
         input[type="email"],
         input[type="number"],
-        input[type="password"],select {
+        input[type="password"],
+        select {
             display: block;
             width: 100%;
             padding: 10px;
@@ -46,7 +47,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #007f3f;
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -55,26 +56,38 @@
 
         p {
             text-align: center;
+            color: #888888;
         }
 
         a {
-            color: #4CAF50;
+            color: #007f3f;
+            text-decoration: none;
+        }
+
+        .bank-logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-<h1>Sign-up</h1>
+<h1>KCB Bank - Sign Up</h1>
 
 <form action="signUp" method="post">
-    <input type="text" name="username" id="username" placeholder="Username"/>
+    <img src="./images/kcb.png" alt="KCB Bank Logo" class="bank-logo">
+    <input type="text" name="username" id="username" placeholder="Username" required/>
 
-    <input type="email" name="email" id="email" placeholder="Email"/>
-    <input type="password" name="password" id="password" placeholder="Password"/>
-    <input type="number" name="age" id="age" placeholder="age"/>
-    <input type="number" name="amount" id="amount" placeholder="amount"/>
-    <select name="bankType" id="bankType">
-        <option value="saving account">current account</option>
-        <option value="saving account">saving account</option>
+    <input type="email" name="email" id="email" placeholder="Email" required/>
+    <input type="password" name="password" id="password" placeholder="Password" required/>
+    <input type="number" name="age" id="age" placeholder="Age" required/>
+    <input type="number" name="amount" id="amount" placeholder="Initial Deposit Amount" required/>
+    <select name="bankType" id="bankType" required>
+        <option value="">Select Account Type</option>
+        <option value="current account">Current Account</option>
+        <option value="saving account">Savings Account</option>
     </select>
     <input type="submit" value="Sign Up">
     <p>Already have an account? <a href="login.jsp">Login</a></p>
