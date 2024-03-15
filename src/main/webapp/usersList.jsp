@@ -80,8 +80,7 @@
 </head>
 <body>
 <div class="container">
-    <img src="./images/kcb.png" alt="KCB Logo" class="logo">
-    <h1>KCB Bank - Customer List</h1>
+    <h1>FinTech Bank - Customer List</h1>
     <p class="description">
         Below is the list of all registered customers of KCB Bank. You can view their details here.
     </p>
