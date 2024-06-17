@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
                         System.out.println(email);
 
                         session.setAttribute("email", email);
-                        res.sendRedirect("/banking-system/users");
+                        res.sendRedirect("/banking_system_war_exploded/banking-system/users");
                     } else {
                         System.out.println("bank");
 

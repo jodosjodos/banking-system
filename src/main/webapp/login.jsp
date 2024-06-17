@@ -79,7 +79,7 @@
     <input type="password" name="password" id="password" placeholder="Enter your password">
     <select name="bankType" id="bankType">
         <option value="current account">Current Account</option>
-        <option value="savings account">Savings Account</option>
+        <option value="saving account">Savings Account</option>
     </select>
     <input type="submit" value="Login">
     <p>Don't have an account? <a href="signUp.jsp">Sign Up</a></p>
