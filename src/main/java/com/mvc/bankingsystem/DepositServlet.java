@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.*;
 
 @WebServlet("/deposit")
-public class DepositServlet extends HttpServlet {
+public class    DepositServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
